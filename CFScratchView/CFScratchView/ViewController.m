@@ -18,7 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    // 清晰的图片
     UIImage* image = [UIImage imageNamed:@"paint01-1"];
+    // 上层模糊的图片
     UIImage* coverImage = [UIImage imageNamed:@"paint01-01blur"];
     CFScratchView* scratchView = [[CFScratchView alloc] initWithImage:image coverImage:coverImage];
     [self.view addSubview:scratchView];

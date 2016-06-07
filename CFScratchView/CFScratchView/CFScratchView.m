@@ -63,6 +63,10 @@
     [super setFrame:frame];
     self.imageView.frame = self.bounds;
     self.coverImageView.frame = self.bounds;
+    
+    if (_imageContext != NULL) {
+        CFRelease(_imageContext);
+    }
     self.imageContext = CGBitmapContextCreate(0, frame.size.width, frame.size.height, 8, frame.size.width * 4, self.colorSpace, kCGImageAlphaPremultipliedLast);
     CGContextSetStrokeColorWithColor(self.imageContext,[UIColor redColor].CGColor);
     CGContextSetFillColorWithColor(self.imageContext, [UIColor redColor].CGColor);
@@ -110,7 +114,7 @@
         
         CGContextStrokePath(self.imageContext);
     }
-    
+
     
     CGImageRef cgImage = CGBitmapContextCreateImage(self.imageContext);
     UIImage *image = [UIImage imageWithCGImage:cgImage];
@@ -157,8 +161,13 @@
 }
 
 - (void)dealloc{
-    CFRelease(self.imageContext);
-    CFRelease(self.colorSpace);
+    if (_imageContext != NULL) {
+        CFRelease(_imageContext);
+    }
+    
+    if (_colorSpace != NULL) {
+        CFRelease(_colorSpace);
+    }
 }
 
 @end
