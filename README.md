@@ -14,3 +14,5 @@
     [self.view addSubview:scratchView];
     scratchView.frame = CGRectMake(0, 100, self.view.bounds.size.width, 400);
 ```
+
+[简书地址](http://www.jianshu.com/p/47c5d99e31f3)
